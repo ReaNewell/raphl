@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="app-container">
+            <div class="form-container">
+                <h1>Shuffled Entry Selector</h1>
+                <form action="" onsubmit="addEntry()">
+                    <input type="text" id="name-input" required>
+                    <input type="number" id="number-input" value="1">
+                    <button id="add-button">ADD ENTRY</button>
+                </form>
+                <div id="checkbox-container">
+                    <p>Expanded/Collapsed</p>
+                    <input type="checkbox" id="display-mode" onchange="changeDisplayMode()">
+                    <div id="outer-circle"></div>
+                    <div id="inner-circle"></div>
+                </div>
+                <button onclick="getRandomEntry()" id="random-button">GET RANDOM ENTRY</button>
+                <button onclick="clearAllEntries()" id="clear-button">CLEAR ALL ENTRIES</button>
+                <div id="error">Please add at least one entry.</div>
+            </div>
+            <div class="list-container">
+                <h2>Entries</h2>
+                <div id="list-display"></div>
+            </div>
+            <div id="selected-entry-modal">
+                <div id="selected-entry"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
+
