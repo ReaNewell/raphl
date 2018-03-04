@@ -1,3 +1,4 @@
+// HTML elements converted to variables.
 const nameInput = document.getElementById('name-input');
 const numberInput = document.getElementById('number-input');
 const listDisplay = document.getElementById('list-display');
@@ -10,29 +11,32 @@ let condensed = false;
 let entries = [];
 let condensedEntries = {};
 
+//Adds entry to array and increases count in condensedEntries object.
 function addEntry(e) {
     event.preventDefault();
-
+	// Assigns variables to form inputs.
 	const name = nameInput.value;
 	const num = numberInput.value;
-	error.style.display = "none";
-	
+	// Removes error when new entry submitted.
+	error.innerHTML = "";
 	// Adds total amount of entries for each name. {Name: Total}
 	if (condensedEntries[name] == undefined) {
 		condensedEntries[name] = parseInt(num);
 	} else {
 		condensedEntries[name] += parseInt(num);
 	}
-
+	// Adds number entries depending on submited number value.
 	for (i=0; i<num; i++) {
 		entries.push(name);
 	};
-
 	updateList();
 };
+
+// Removes entry from array and lowers count in condensedEntries object.
 function removeEntry() {
-	const entry = event.srcElement.id.split('-');
-	const removableIndex = parseInt(entry[1]);
+	const buttonId = event.srcElement.id.split('-');
+	const entry = buttonId[1];
+	const removableIndex = parseInt(entry);
 
 	if (condensed === false) {
 		const name = entries[removableIndex];
@@ -45,7 +49,7 @@ function removeEntry() {
 		}
 		entries.splice(removableIndex, 1);
 	} else if (condensed === true) {
-		const entryName = entry[1];
+		const entryName = entry;
 		const count = entries.length;
 		for (i=0; i<entries.length; i++) {
 			if (entries[i] === entryName) {
@@ -62,12 +66,21 @@ function removeEntry() {
 
 	updateList();
 };
+// Clears the entries array and condensedEntries objects.
+// Then updates the list view.
 function clearAllEntries() {
-	entries = [];
-	condensedEntries = {};
-	updateList();
+	if (entries.length > 0) {
+		entries = [];
+		condensedEntries = {};
+		updateList();
+	} else {
+		error.innerHTML = "There is nothing to clear.";
+	}
 }
 
+
+// Updates list of entries everytime an entry is added, removed, 
+// or the display is changed.
 function updateList() {
 	var input = '';
 
@@ -87,22 +100,8 @@ function updateList() {
 	listDisplay.innerHTML = input;
 };
 
-function getRandomEntry() {
-	if (entries.length != 0) {
-		const randNum = (Math.floor(Math.random() * entries.length));
-		const result = entries[randNum];
-	
-		resultsModal.style.display = 'flex';
-		selectedEntry.innerHTML= "<h1>" + result + "</h1>";
-	} else {
-		error.style.display = "block";
-	}
-};
 
-resultsModal.addEventListener('click', function() {
-	resultsModal.style.display = 'none';
-});
-
+// Changes the display mode when checkbox is changed.
 function changeDisplayMode() {
 	if (condensed) {
 		condensed = false;
@@ -111,3 +110,23 @@ function changeDisplayMode() {
 	}
 	updateList();
 }
+
+// Selects a random entry by creating a random number and selecting 
+// that index in the entries array.
+function getRandomEntry() {
+	if (entries.length != 0) {
+		const randNum = (Math.floor(Math.random() * entries.length));
+		const result = entries[randNum];
+	
+		resultsModal.style.display = 'flex';
+		selectedEntry.innerHTML= "<h1>" + result + "</h1>";
+	} else {
+		error.innerHTML = "Please add at least one entry.";
+	}
+};
+
+// Exits modal by clicking outside display box.
+function exitModal() {
+	resultsModal.style.display = 'none';
+};
+

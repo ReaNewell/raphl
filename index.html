@@ -36,13 +36,13 @@
                 </div>
                 <button onclick="getRandomEntry()" id="random-button">GET RANDOM ENTRY</button>
                 <button onclick="clearAllEntries()" id="clear-button">CLEAR ALL ENTRIES</button>
-                <div id="error">Please add at least one entry.</div>
+                <div id="error"></div>
             </div>
             <div class="list-container">
                 <h2>Entries</h2>
                 <div id="list-display"></div>
             </div>
-            <div id="selected-entry-modal">
+            <div id="selected-entry-modal" onclick="exitModal()">
                 <div id="selected-entry"></div>
             </div>
         </div>

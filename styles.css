@@ -1,19 +1,24 @@
+/*////////////////////
+// GLOABAL SETTINGS //
+////////////////////*/
 :root {
 	--main-color: #66d8c5;
 	--secondary-color: #5dbdad;
 }
-
 * {
 	margin: 0 0;
 	padding: 0 0;
 }
-
 html {
 	font-family: 'Raleway', sans-serif;
 	font-size: 10px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+/*/////////////////
+// APP CONTAINER //
+/////////////////*/
 #app {
 	font-size: 1.6rem;
 }
@@ -25,7 +30,12 @@ html {
 	max-width: 120rem;
 }
 
+
+/*/////////////////
+// FORM SETTINGS //
+/////////////////*/
 h1 {
+	color: var(--main-color);
 	font-size: 3.6rem;
 	margin: 3rem 0;
 	text-align: center;
@@ -50,26 +60,30 @@ input {
 	width: 50%;
 }
 
+/* BUTTONS */
 #add-button, #random-button, #clear-button {
 	background: var(--main-color);
 	border: none;
+	border-top: .5rem solid var(--main-color);
 	border-bottom: .5rem solid var(--secondary-color);
 	color: #ffffff;
 	height: 3.5rem;
+	padding-bottom: .5rem;
 	width: 100%;
 }
 #add-button:focus, #random-button:focus, #clear-button:focus {
 	outline: none;
 }
 #add-button:active, #random-button:active, #clear-button:active {
-	border-top: .5rem solid #ffffff;
+	border-top: .5rem solid white;
 	border-bottom: .5rem solid var(--main-color);
+	padding-bottom: 0rem;
 }
 #random-button, #clear-button {
 	width: 50%;
 }
 
-
+/* CHECKBOX */
 #checkbox-container {
 	height: 3.5rem;
 	position: relative;
@@ -92,7 +106,7 @@ input {
 }
 #error {
 	color: var(--secondary-color);
-	display: none;
+	display: block;
 	font-size: 1.6rem;
 	font-weight: bold;
 	margin-top: .5rem;
@@ -127,7 +141,7 @@ input {
 #display-mode:checked ~ #outer-circle {
 	background: linear-gradient(45deg, #5aff9f, #629ed6);
 }
-/* ////////////////// */
+
 
 /*////////////////
 // ENTRIES LIST //
@@ -138,6 +152,7 @@ input {
 	width: 100%;
 }
 h2 {
+	color: var(--secondary-color);
 	font-size: 3rem;
 	text-align: center;
 	margin: 3rem 0;
@@ -204,6 +219,9 @@ h2 {
 }
 
 
+/*///////////////////////
+// MOBILE/SMALL SCREEN //
+///////////////////////*/
 @media (max-width: 45rem) {
 	#list-display {
 		min-height: 40vh;
