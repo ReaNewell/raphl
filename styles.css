@@ -39,9 +39,10 @@ html {
 /////////////////*/
 h1 {
 	color: var(--main-color);
-	font-size: 3.6rem;
-	margin: 3rem 0;
+	font-size: 5rem;
+	margin: 2.5rem 0;
 	text-align: center;
+	text-decoration: underline;
 }
 .form-container {
 	font-size: 0;
